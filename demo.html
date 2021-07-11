@@ -1,0 +1,42 @@
+<html>
+    <head>
+    <h1>title</h1>
+    </head>
+    <body>
+        <div>
+        <input type="text" name="firstname" onkeyup="inputchange()" placeholder="Enter Your First name" id="first"/>
+        <label style="color:red;display:none;" id="less">FIRST NAME NEED TO BE MORE THAN 5 CHARACTER</label>
+        <label style="color: green;display: none;"id="noname">First Name Is Manditory</label>
+</div>
+
+<script>
+function inputchange(){
+var first = document.getElementById("first").value;
+console.log(first);
+if(first){
+    if(first.length<5){
+        document.getElementById("less").style="display:block;color:red"
+        document.getElementById("noname").style="display:none;"
+
+    }
+    else{
+        document.getElementById("less").style="display:none;color:red"
+        document.getElementById("noname").style="display:none;"
+    }
+
+}
+else{
+    document.getElementById("noname").style="display:block;color:green"
+    document.getElementById("less").style="display:none;color:red"
+}
+
+
+
+
+
+    }
+
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,115 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="home.css"/>
+    </head>
+    <body>
+<p>Hi Dude ! ! !</p>
+<p id="date">Last Logged in : </p>
+<p id="mail"></p>
+<div class="addstd">
+    <button type="button" onclick="add()" id="add">Add Student</button>
+</div>
+<div class="student" id="form">
+    <div>
+        <input type="text" placeholder="name" id="name"/>
+        <label style="color:red;display:none;"id="NoName">name is Required</label>
+        <label style="color: red;display: none;" id="namelength">At least 4 character</label>
+    </div>
+    <div>
+        <input type="text" placeholder="age" id="age"/>
+        <label style="color: red;display: none;"id = "noage">Age is Required</label>
+        <label style="color: red; display: none;" id="less age">Age Must Be Above 18</label>
+    </div>
+    <div>
+        <input type="text" placeholder="college name" id="college"/>
+        <label style="color: red; display: none;" id="nocollegename">college name Required</label>
+
+    </div>
+        <div><button class="click" id="mybtn" onclick="proceed();">Save</button</div>
+    </div>
+</div>  
+
+    </body>
+</html>
+<script>
+    function add(){
+        document.getElementById("form").style="display:block;"
+
+
+
+    }
+var mail = localStorage.getItem('mail');
+var date = new Date();
+var m=[];
+m = mail.split("@");
+console.log(m);
+document.getElementById("mail").innerHTML= "Hai"+" "+ m[0];
+document.getElementById("date").innerHTML+=date;
+var formdata = [];
+function proceed(){
+    var c =0;
+    var name = document.getElementById("name").value
+    var age =parseInt( document.getElementById("age").value)
+    var college =document.getElementById("college").value
+
+    if(name){
+        if(name.length<4){
+            document.getElementById("namelength").style="color:red;display:block;"
+            document.getElementById("NoName").style="color:red;display:none;"
+        }
+        else{
+            c++;
+            document.getElementById("NoName").style="color:red;display:none;"
+             document.getElementById("name").style="border:solid black 1px;display:block;"
+              document.getElementById("namelength").style="color:red;display:none;"
+
+        }
+    }
+    else{
+        document.getElementById("NoName").style="color:red;display:block;"
+        document.getElementById("name").style="border:solid red 1px;display:block"
+    }
+    if(age){
+        if(age<18){
+            document.getElementById("less age").style="color:red;display:block;"
+             document.getElementById("noage").style="color:red;display:none;"
+
+        }
+        
+        else{
+            c++;
+        document.getElementById("noage").style="color:red;display:none;"
+        document.getElementById("less age").style="color:red;display:none;"
+        }
+
+    }
+       else { 
+        document.getElementById("noage").style="color:red;display:block;"
+        document.getElementById("less age").style="color:red;display:none;"
+    }
+    if(college){
+        c++;
+        document.getElementById("nocollegename").style="color:red;display:none;"
+
+
+    }
+    else{
+        document.getElementById("nocollegename").style="color:red;display:block;"
+    }
+        if(c==3){
+          var obj ={
+              name:name,
+              age:age,
+              college:college,
+
+          }
+          formdata.push(obj);
+          console.log(formdata);
+          localStorage.setItem("studentlist",JSON.stringify(formdata));
+          window.location.href="studentlist.html"
+        //   /JSON.parse//
+        }
+
+
+}
+</script>

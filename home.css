@@ -1,0 +1,18 @@
+p{
+    color:#00868B;
+    font-size: 30px;
+}
+input{
+    text-align: center;
+    margin-bottom: 10px;
+    border: 1px solid black;
+}
+.addstd{
+    margin-bottom: 10px;
+    height: 25px;
+
+}
+.student{
+    display:none;
+    
+}

@@ -1,0 +1,291 @@
+<html>
+    <head>
+    <title> sign up</title>
+    <link rel="stylesheet" href="auth.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    </head>
+    <body>
+        <div id="signup" class ="signup">
+            <div class="buff" style="float:left; width: 29.66%; background-color:#32d195;border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;height:90%;">
+                <h1 style="color:purple;margin-top:220px;">Welcome back<br> Sign In</h1>
+                <button class="click" style="text-align:center;" id="mybtn1" onclick="changelogin();">Sign in</button>
+                
+            </div>
+            <div style="float:left; width: 60%;background-color:white;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;height:90%;">
+                <div style="text-align: center;">
+                <h1>Create Account</h1>
+                <div>
+                    <input type="text"name ="firstname" onkeyup="validatename()" placeholder="Enter your First Name" value="" id ="firstname" style=" width:180px;"/>
+                    <label style="color:red;display:none;"id="NoFirstName"> First name is Required</label>
+                    <label style="color: red; display: none;" id ="count error">First name should be minimum 6 character</label>
+                    </div>
+                    <div>
+                        <input type="text" name ="lastname" placeholder="Enter your Last Name" value="" id ="lastname" style="width:180px;"/> 
+                    </div>
+                    <div>
+                        <input type="number" onkeyup="mobile()" placeholder="mobilenumber" id="mobile"/>
+                        <label style="color: red; display:none;"id = "mobileerror">Enter your Phone Number</label>
+                    </div>
+                    <div>
+                        <input type="email" name="email" onkeyup="validatemail();"placeholder="Enter your Email id " value="" id ="email"  style="width:180px;"/>
+                        <label style="color:red;display:none;"id="EmailError">Email is invalid</label> 
+                    </div>
+                    <div>
+                        <input type="password" name="password" onkeyup="pass();" placeholder="Enter your Password" value="" id="password"/>
+                        <label style="color:red;display:none;"id="paserror">use one one capital letter and special charcter</label>
+                        
+                    </div>
+                    <div>
+                        <input type="password"name="password" onkeyup="pass();" placeholder="Confirm Password" value="" id="confirm"/>
+                        <label style="color:green;display:none;"id="passmatch">password matching</label>
+                        <label style="color:red;display:none;"id="nomatch">Password no Match</label>
+                    </div>
+                    <div>
+                        <input type="Radio" Name="Gender"  onkeyup="validategender();" id="male" value="Male"><label id="m">Male</label>
+                         <input type="Radio" Name="Gender"  onkeyup="validategender();" id="female" value="Female"><label id="f">Female</label>
+                         <label style="color: red;display: none;"id="gendererror">Please Provide Gender</label>
+                    </div>
+                    <div>
+                        <textarea id="address" onkeyup="validateaddress()" rows="4" cols="30"></textarea>
+                        <label style="color:red;display:none;"id="noadress"> Address is Required</label>
+                    </div>
+                    <div>   
+                        <input id="image" type="file" name="image" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])"   >
+                        <div>
+                        <img id="blah"  width="50" height="50" />
+                        </div>
+                        <!-- <input id="image" type="file" name="image" onchange="preview();">
+                        <img src=""  id="img" width="50" height="50" /> -->
+                    </div>
+                    <div>
+                        <button class="click " id="myBtn" onclick="register()">submit</button>
+
+                    </div>
+
+            </div>
+            </div>
+        </div>
+        <div id="login" class ="login">
+            <div class="buff" style="float:left; width: 29.66%; background-color:#32d195;border-left:2px solid black;border-top:2px solid black;border-bottom:2px solid black;height:70%;">
+                <h1 style="margin-top: 150px; color:purple"> Sign Up ! ! !</h1>
+                <button class ="click" id="mybtn2" onclick="changesignup();">Sign up</button>
+            </div>
+            <div style="float:left; width: 60%;background-color:white;border-right:2px solid black;border-top:2px solid black;border-bottom:2px solid black;height:70%;">
+                <div style="text-align:center; margin-top: 140px;">
+                <h1>Login Account</h1>
+                <div style="margin-bottom: 20px;">
+                <a href="https://www.youtube.com/channel/UC_geCGlltfP0T5_v0LO92wQ/videos"class="fa fa-facebook-square" style="font-size:25px;"></a>&nbsp;&nbsp;
+                <a href="https://www.youtube.com/channel/UC_geCGlltfP0T5_v0LO92wQ/videos" class="fa fa-google-plus" style="font-size:25px"></a>&nbsp;&nbsp;
+                <a href="https://www.youtube.com/channel/UC_geCGlltfP0T5_v0LO92wQ/videos"class="fa fa-github" style="font-size:25px"></a>&nbsp;&nbsp;
+                </div>
+
+                <div>
+                        <input type="email"  onkeyup="emailid();"placeholder="Enter your Email id " id ="emailid"style="width:180px;"/>
+                        <label style="color:red;display:none;"id="EmailError1">Email is invalid</label> 
+                    </div>
+                    <div>
+                        <input type="password" name="password" onkeyup="loginpassword();" placeholder="Enter your Password"id="loginpassword"/>
+                        
+                    </div>
+                    <div>
+                        <button class="click" id="myBtn" onclick="myFunction()">submit</button>
+
+                    </div>
+                    </div>
+
+            </div>
+        </div>
+        
+    </body>
+    </html>
+    <script>
+        var check = 0;
+        // function preview(){
+        //     var img = document.getElementById('image').value;
+        //     console.log('==i',img);
+        //     document.getElementById('img').src = "b1.jpeg";
+        // }
+        function mobile(){
+          var mobile = document.getElementById("mobile").value;
+          if(mobile){
+              if(mobile.length == 10){
+                check++;
+                document.getElementById("mobileerror").style="display:none;color:red;";
+                document.getElementById("mobile").style="border:solid black 1px";
+              }
+              else{
+                document.getElementById("mobileerror").style="display:block;color:red;";
+                document.getElementById("mobile").style="border:solid red 1px";
+              }
+          }
+        }
+        function myFunction(){
+           var mail= document.getElementById("emailid").value;
+           var password=document.getElementById("loginpassword").value
+           if(mail&&password){
+               localStorage.setItem('mail',mail);
+               window.location.href="home.html";
+
+
+           }
+           else{
+               alert("please enter mail id and password");
+           }
+        }
+        function loginpassword(){
+            var password=document.getElementById('loginpassword').value;
+        if(password){
+            document.getElementById("loginpassword").style="border:2px solid green;"
+         }
+         else{
+             document.getElementById("loginpassword").style="border:2px solid red;"
+         }
+        }
+        function emailid(){
+            var email = document.getElementById('emailid').value;
+        if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)){
+            document.getElementById('EmailError1').style="display:none;"
+            document.getElementById("emailid").style="border:1px solid black; width:180px;"
+        }
+        else{
+            document.getElementById('EmailError1').style="display:block;color:red;"
+            document.getElementById("emailid").style="border:1px solid red; width:180px;"
+        }
+        }
+
+        function validatename(){
+            var firstname=document.getElementById("firstname").value;
+        if(firstname){
+        if(firstname.length< 5){
+            document.getElementById("firstname").style="border:1px solid red; width:180px;"
+            document.getElementById('NoFirstName').style="display:none;color:red;"     
+            document.getElementById("count error").style="display:block;color:red;"
+        }
+        else{
+            document.getElementById("firstname").style="border:1px solid black; width:180px;"
+            document.getElementById("count error").style="display:none;color:red;"
+            check ++;
+        }
+    } 
+     else {
+        document.getElementById("firstname").style="border:1px solid red; width:180px;"
+        document.getElementById('NoFirstName').style="display:block;color:red;"
+        document.getElementById("count error").style="display:none;color:red;"
+     }
+     
+        }
+        function pass(){
+        var password=document.getElementById('password').value;
+        var confirm=document.getElementById('confirm').value;
+        if(password){
+    var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+
+         if( strongRegex.test(password)){
+            // console.log("pass")
+            document.getElementById("password").style="border:2px solid green;"
+            check ++;
+         }
+         else{
+             document.getElementById("password").style="border:2px solid red;"
+         }
+         //document.getElementById('password').style="margin-bottom:15px;width:180px;"
+     }
+     if(password != "" && confirm!=""){
+        if(password==confirm){
+            check ++;
+            // console.log("password pass");
+            document.getElementById("passmatch").style="display:block;color:green"
+            document.getElementById("nomatch").style="display:none;color:red"
+            
+        }
+        else{
+                // console.log('elseif')
+                document.getElementById("nomatch").style="display:block;color:red"
+                document.getElementById("passmatch").style="display:none;color:green"
+        }
+    }
+    else{
+        document.getElementById("nomatch").style="display:none;color:red"
+        document.getElementById("passmatch").style="display:none;color:green"
+    }
+            
+        }
+        function validatemail () {
+        var email = document.getElementById('email').value;
+        if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(document.getElementById('email').value)){
+            check ++;
+    //  console.log('ifmail')
+    document.getElementById('EmailError').style="display:none;"
+    document.getElementById("email").style="border:1px solid black; width:180px;"
+  }
+  else{
+    document.getElementById('EmailError').style="display:block;color:red;"
+    document.getElementById("email").style="border:1px solid red; width:180px;"
+  }
+        }
+        function validategender (){
+            var male=document.getElementById("male").checked;
+            var female=document.getElementById("female").checked;
+            if(male || female){
+                check ++;    
+    }
+    else{
+        document.getElementById('gendererror').style.display="none";
+
+    }
+        }
+        function validateaddress(){
+           var addres= document.getElementById("address").value;
+           console.log('===',addres);
+           if(addres){
+               if(addres.length<10){
+                   document.getElementById("noadress").style="display:block;color:red;"
+                   document.getElementById("address").style="border:1px solid red;"
+
+               }
+               else{
+                check ++;
+                document.getElementById("noadress").style="display:none;color:red;"
+                document.getElementById("address").style="border:1px solid black;"
+               }
+           }
+
+        }
+        function changelogin(){
+            document.getElementById("login").style="display:block;text-align:center;"
+            document.getElementById("signup").style="display:none;"
+        }
+        function changesignup(){
+            document.getElementById("login").style="display:none;"
+            document.getElementById("signup").style="display:block;"
+
+        }
+       function register(){
+        var firstname=document.getElementById("firstname").value;
+        var password=document.getElementById('password').value;
+        var confirm=document.getElementById('confirm').value;
+        var email = document.getElementById('email').value;
+        var male=document.getElementById("male").checked;
+        var female=document.getElementById("female").checked;
+        var addres= document.getElementById("address").value;
+        var phone=document.getElementById("mobile").value;
+        console.log('===')
+        if(check >= 7){
+            localStorage.setItem("firstname",firstname)
+            localStorage.setItem("mail",email)
+            localStorage.setItem("address",addres)
+            localStorage.setItem("mobile",phone)
+            if(male ==true)
+                localStorage.setItem("gender","male");
+            else
+                localStorage.setItem("gender","female");
+             window.location.href="home.html";
+
+        }
+        else{
+        }
+       }
+
+    </script>
+  

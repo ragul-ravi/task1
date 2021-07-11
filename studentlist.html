@@ -1,0 +1,48 @@
+<html>
+    <head>
+
+    </head>
+    <style>
+        td{
+            width:200px;
+            height:30px;
+        }
+    </style>
+    <body>
+        <h1> Student list</h1>
+        <table id="table">
+            <tr>
+                <td>
+                    Name
+                </td>
+                <td>
+                    Age
+                </td>
+                <td>
+                    College
+                </td>
+            </tr>
+        </table>
+        
+    </body>
+    
+</html>
+<script>
+    var studentdata=JSON.parse (localStorage.getItem("studentlist"));
+    var data=document.getElementById("table")
+    for(var i=0;i<studentdata.length;i++){
+        var tr = document.createElement("tr");
+        var td1 = document.createElement("td");
+        var td2 = document.createElement("td");
+        var td3 = document.createElement("td");
+        td1.innerHTML = studentdata[i].name;
+        td2.innerHTML = studentdata[i].age;
+        td3.innerHTML = studentdata[i].college;
+        data.append(tr);
+        tr.append(td1);
+        tr.append(td2);
+        tr.append(td3);
+
+    }
+    console.log(studentdata);
+</script>
